@@ -1,0 +1,5 @@
+
+*.pyc
+src/data/round1_ijcai_18_train_20180301.txt
+src/data/round1_ijcai_18_test_a_20180301.txt
+src/.ipynb_checkpoints/feature_engineering-checkpoint.ipynb
