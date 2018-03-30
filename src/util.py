@@ -39,6 +39,28 @@ def min_max_scaling(dataset, feilds):
         raise "Feilds is not a list/tuple/str arg!"
     
     return dataset
+
+def reindex(dataset, feilds):
+    if not isinstance(dataset, pd.DataFrame):
+        raise "The type of dataset is not DataFrame!"
+
+    if isinstance(feilds, list) or isinstance(feilds, tuple):
+        pass
+    elif isinstance(feilds, str):
+        [feilds, ]
+    else:
+        raise "Feilds is not a list/tuple/str arg!"
+    for feild in feilds:
+        values = dataset[feild].unique()
+        dit = {}
+        for index, val in enumerate(values):
+            dit[val] = index
+        df = dataset[feild].tolist()
+        for i in range(len(df)):
+            df[i] = dit[df[i]]
+        dataset[feild] = df
+    return dataset
+
 if __name__ == "__main__":
     df = {
         'a':[1,2,3,4]
